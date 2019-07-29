@@ -55,7 +55,7 @@ export default function Demo() {
         <FaGitlab className={styles.icon} />
       </a>
       <div className={styles.container}>
-        <div className={styles.standalone}>
+        {/* <div className={styles.standalone}>
           <H2>Standalone Fields</H2>
           <FormDateRange label="Travel Dates" />
           <FormInput
@@ -161,7 +161,7 @@ export default function Demo() {
               Submit
             </Button>
           </Form>
-        </div>
+        </div> */}
         <div className={styles.formBuilder}>
           <H2>Form Builder</H2>
           <FormBuilder
@@ -174,7 +174,7 @@ export default function Demo() {
             }}
           />
         </div>
-        <div className={styles.formBuilderLarge}>
+        {/* <div className={styles.formBuilderLarge}>
           <H2>Form Builder (Large)</H2>
           <FormBuilder
             config={largeConfig(getInitialState("fb_initial_large_state"))}
@@ -188,7 +188,7 @@ export default function Demo() {
               alert("Check the developer console!");
             }}
           />
-        </div>
+        </div> */}
       </div>
     </Layout>
   );
