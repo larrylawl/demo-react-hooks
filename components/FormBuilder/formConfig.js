@@ -14,29 +14,26 @@ function getConfig(initialState) {
   const steps = initialState.steps;
   const edges = [];
 
-  for (let i = 0; i < steps.length; i++) {
-    // TODO: add step
-    const step = steps[i];
+  steps.forEach(step => {
+    // TODO: add step render
     const sections = step.sections;
-    for (let j = 0; j < sections.length; j++) {
-      // TODO: add section
-      const section = sections[j];
+    sections.forEach(section => {
+      // TODO: add question render
       const questions = section.questions;
-      for (let k = 0; k < questions.length; k++) {
-        const question = questions[k];
+      questions.forEach(question => {
         const { id, component, dependencies } = question;
         const opts = { props: question.props };
         graph.addNode(id, component, opts)
 
-        for (let l = 0; l < dependencies.length; l++) {
-          const dependency = dependencies[l];
+        dependencies.forEach(dependency => {
           const to = Object.keys(dependency)[0];
           const edge = new Edge(id, to, dependency[to]);
           edges.push(edge);
-        }
-      }
-    }
-  }
+        })
+      })
+    })
+  })
+
 
   // Adding Edges only after nodes have been added. 
   // Having an incomplete nodes might lead to  `this.graph.getNode(nodeName);` in `node.to` to return undefined.

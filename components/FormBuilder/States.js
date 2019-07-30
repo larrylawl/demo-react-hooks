@@ -21,13 +21,13 @@ export const defaultState = {
                 label: 'Checking this will uncheck #3',
               },
               dependencies: [
-                {
-                  "checkThree": (fromNode, toNode) => {
-                    if (fromNode) {
-                      toNode.call("setValue", false);
-                    }
-                  }
-                }
+                // {
+                //   "checkThree": (fromNode, toNode) => {
+                //     if (fromNode) {
+                //       toNode.call("setValue", false);
+                //     }
+                //   }
+                // }
               ],
               rules: {
                 pattern: '^[A-Za-z ]+$',
@@ -43,13 +43,13 @@ export const defaultState = {
                 label: 'Checking this will uncheck #3',
               },
               dependencies: [
-                {
-                  "checkThree": (fromNode, toNode) => {
-                    if (fromNode) {
-                      toNode.call("setValue", false);
-                    }
-                  }
-                },
+                // {
+                //   "checkThree": (fromNode, toNode) => {
+                //     if (fromNode) {
+                //       toNode.call("setValue", false);
+                //     }
+                //   }
+                // },
               ],
               rules: {
                 pattern: '^[A-Za-z ]+$',

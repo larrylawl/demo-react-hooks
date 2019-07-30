@@ -26,19 +26,21 @@ class Graph {
 
   // DFS to apply callback of all linked nodes
   runChanges(changes) {
+    console.log('changes:', changes)
     const nodes = Object.keys(changes);
 
-    nodes.forEach(name => {
-      const node = this.nodes.get(name);
+    nodes.forEach(fromNodeName => {
+      const fromNode = this.nodes.get(fromNodeName);
 
-      node.render();
+      fromNode.render();
 
-      node.out.forEach((callback, outNode) => {
-        const change = changes[name];
+      fromNode.out.forEach((callback, toNodeName) => {
+        // console.log('name:', name)
+        // const change = changes[name];
+        const toNode = this.nodes.get(toNodeName)
+        callback(fromNode, toNode);
 
-        callback(change, outNode);
-
-        outNode.render();
+        toNode.render();
       });
     });
   }
@@ -71,48 +73,56 @@ class Graph {
   }
 
   isCyclic() {
-    const nodes = Array.from(this.nodes);
-    const length = nodes.length;
-
+    let result = false;
     // Mark all the vertices as not visited and 
     // not part of recursion stack 
-    let visited = new Array(length).fill(false);
-    let recStack = new Array(length).fill(false);
+    let visited = {};
 
     // Call the recursive helper function to 
-    // detect cycle in different DFS trees 
-    for (let i = 0; i < length; i++) {
-      if (this.isCyclicUtil(i, visited, recStack, nodes))
-        return true;
-    };
-    return false
-  }
+    // detect cycle in different DFS trees
+    for (let [key, value] of this.nodes) {
+      let recStack = {};
+      console.log('parentKey', key)
 
-  isCyclicUtil(i, visited, recStack, nodes) {
-    // Mark the current node as visited and 
-    // part of recursion stack 
-    if (recStack[i])
-      return true;
-
-    if (visited[i])
-      return false;
-
-    visited[i] = true;
-
-    recStack[i] = true;
-
-    // Outgoing Nodes
-    const children = Array.from(nodes[i][1].out);
-
-    for (let j = 0; j < children.length; j++) {
-      if (this.isCyclicUtil(j, visited, recStack, nodes))
-        return true;
+      if (this.isCyclicUtil(key, visited, recStack)) {
+        result = true;
+        break;
+      }
     }
 
-    // reset recursion stack for next unvisited node
-    recStack[i] = false;
+    return result;
+  }
 
-    return false;
+  isCyclicUtil(key, visited, recStack) {
+    console.log('recStack', JSON.stringify(recStack));
+    // Mark the current node as visited and 
+    // part of recursion stack 
+
+    let result = false;
+
+    console.log(recStack[key])
+    if (!!recStack[key])
+      return true;
+
+    if (!!visited[key])
+      return false;
+
+    visited[key] = true;
+
+    recStack[key] = true;
+
+    // Outgoing Nodes
+    const children = this.nodes.get(key) ? this.nodes.get(key).out : new Map();
+
+    for (let [childKey, childValue] of children) {
+      console.log('childKey', childKey)
+      if (this.isCyclicUtil(childKey, visited, recStack)) {
+        result = true;
+        break;
+      }
+    }
+
+    return result;
   }
 }
 
