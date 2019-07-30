@@ -24,6 +24,7 @@ class Graph {
     return this.getNode(name);
   }
 
+  // DFS to apply callback of all linked nodes
   runChanges(changes) {
     const nodes = Object.keys(changes);
 
@@ -67,6 +68,51 @@ class Graph {
     }
 
     return children;
+  }
+
+  isCyclic() {
+    const nodes = Array.from(this.nodes);
+    const length = nodes.length;
+
+    // Mark all the vertices as not visited and 
+    // not part of recursion stack 
+    let visited = new Array(length).fill(false);
+    let recStack = new Array(length).fill(false);
+
+    // Call the recursive helper function to 
+    // detect cycle in different DFS trees 
+    for (let i = 0; i < length; i++) {
+      if (this.isCyclicUtil(i, visited, recStack, nodes))
+        return true;
+    };
+    return false
+  }
+
+  isCyclicUtil(i, visited, recStack, nodes) {
+    // Mark the current node as visited and 
+    // part of recursion stack 
+    if (recStack[i])
+      return true;
+
+    if (visited[i])
+      return false;
+
+    visited[i] = true;
+
+    recStack[i] = true;
+
+    // Outgoing Nodes
+    const children = Array.from(nodes[i][1].out);
+
+    for (let j = 0; j < children.length; j++) {
+      if (this.isCyclicUtil(j, visited, recStack, nodes))
+        return true;
+    }
+
+    // reset recursion stack for next unvisited node
+    recStack[i] = false;
+
+    return false;
   }
 }
 

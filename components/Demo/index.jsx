@@ -13,6 +13,7 @@ import Layout from "components/Layout";
 import { H2 } from "components/Typography";
 import { FaGithub, FaGitlab } from "react-icons/fa";
 import styles from "./Demo.scss";
+import { defaultState, circularState } from "../FormBuilder/States";
 
 export function getInitialState(key) {
   // Silly code for retrieving saved state. Do not copy!
@@ -165,12 +166,12 @@ export default function Demo() {
         <div className={styles.formBuilder}>
           <H2>Form Builder</H2>
           <FormBuilder
-            config={formConfig(getInitialState("fb_initial_state"))}
+            config={formConfig(circularState)}
             onSubmit={(state, errors) => {
               console.log("form", state);
               console.log("errors", errors);
-              localStorage.setItem("fb_initial_state", JSON.stringify(state));
-              alert("Check the developer console!");
+              // localStorage.setItem("fb_initial_state", JSON.stringify(state));
+              // alert("Check the developer console!");
             }}
           />
         </div>

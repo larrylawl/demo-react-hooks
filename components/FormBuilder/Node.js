@@ -40,6 +40,7 @@ export default class Node {
   }
 
   call(name, ...args) {
+    console.log('called');
     this.ref.current[name].apply(null, args);
   }
 }
