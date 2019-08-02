@@ -1,10 +1,5 @@
 import Graph from "./Graph";
-import Edge from "./Edge";
-import FormDateRange from "components/FormDateRange";
-import FormSelect from "components/FormSelect";
-import FormInput from "components/FormInput";
-import FormRadio from "components/FormRadio";
-import FormCheckbox from "components/FormCheckbox";
+import Edge from "./Edge"
 
 // Unweighted and directed graph
 function getConfig(initialState) {

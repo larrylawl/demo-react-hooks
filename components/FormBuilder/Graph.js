@@ -26,7 +26,6 @@ class Graph {
 
   // DFS to apply callback of all linked nodes
   runChanges(changes) {
-    console.log('changes:', changes)
     const nodes = Object.keys(changes);
 
     nodes.forEach(fromNodeName => {
@@ -35,8 +34,6 @@ class Graph {
       fromNode.render();
 
       fromNode.out.forEach((callback, toNodeName) => {
-        // console.log('name:', name)
-        // const change = changes[name];
         const toNode = this.nodes.get(toNodeName)
         callback(fromNode, toNode);
 
@@ -82,7 +79,6 @@ class Graph {
     // detect cycle in different DFS trees
     for (let [key, value] of this.nodes) {
       let recStack = {};
-      console.log('parentKey', key)
 
       if (this.isCyclicUtil(key, visited, recStack)) {
         result = true;
@@ -94,13 +90,11 @@ class Graph {
   }
 
   isCyclicUtil(key, visited, recStack) {
-    console.log('recStack', JSON.stringify(recStack));
     // Mark the current node as visited and 
     // part of recursion stack 
 
     let result = false;
 
-    console.log(recStack[key])
     if (!!recStack[key])
       return true;
 
@@ -115,7 +109,6 @@ class Graph {
     const children = this.nodes.get(key) ? this.nodes.get(key).out : new Map();
 
     for (let [childKey, childValue] of children) {
-      console.log('childKey', childKey)
       if (this.isCyclicUtil(childKey, visited, recStack)) {
         result = true;
         break;
