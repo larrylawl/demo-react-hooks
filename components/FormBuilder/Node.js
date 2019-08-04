@@ -5,12 +5,12 @@ export default class Node {
   constructor(graph, name, component, opts) {
     this.graph = graph;
     this.name = name;
-    this.component = component
+    this.component = component;
     this.props = opts.props || {};
     this.visible = typeof opts.visible !== "undefined" ? opts.visible : true;
     this.out = new Map();
     this.ui = null;
-    this.ref = createRef();
+    this.ref = opts.ref ? createRef() : null;
   }
 
   to(nodeName, callback) {
@@ -23,11 +23,18 @@ export default class Node {
 
   render() {
     switch (this.component) {
-      case 'FormCheckbox':
-        this.ui = <FormCheckbox {...this.props} key={this.name} name={this.name} ref={this.ref}></FormCheckbox>;
+      case "FormCheckbox":
+        this.ui = (
+          <FormCheckbox
+            {...this.props}
+            key={this.name}
+            name={this.name}
+            ref={this.ref}
+          />
+        );
         break;
       default:
-        console.warn('Invalid Component!')
+        console.warn("Invalid Component!");
     }
     this.props = this.ui.props;
   }
@@ -41,7 +48,7 @@ export default class Node {
   }
 
   call(name, ...args) {
-    console.log('called');
+    console.log("called");
     this.ref.current[name].apply(null, args);
   }
 }
