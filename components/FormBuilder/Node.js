@@ -30,6 +30,7 @@ export default class Node {
             key={this.name}
             name={this.name}
             ref={this.ref}
+            data-testid={this.name}
           />
         );
         break;
