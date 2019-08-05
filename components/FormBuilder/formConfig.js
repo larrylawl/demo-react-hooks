@@ -1,5 +1,4 @@
 import Graph from "./Graph";
-import Edge from "./Edge"
 
 // Unweighted and directed graph
 function getConfig(initialState) {
@@ -17,23 +16,22 @@ function getConfig(initialState) {
       const questions = section.questions;
       questions.forEach(question => {
         const { id, component, dependencies } = question;
+        const fromNodeName = id;
         const opts = { props: question.props, ref: question.ref };
-        graph.addNode(id, component, opts);
+        graph.addNode(fromNodeName, component, opts);
 
         dependencies.forEach(dependency => {
-          const to = Object.keys(dependency)[0];
-          const edge = new Edge(id, to, dependency[to]);
+          const [toNodeName, callBack] = Object.entries(dependency)[0];
+          const edge = { fromNodeName, toNodeName, callBack };
           edges.push(edge);
         });
       });
     });
   });
 
-  // Adding Edges only after nodes have been added.
+  // Adding Edges only after nodes have been added. 
   // Having an incomplete nodes might lead to  `this.graph.getNode(nodeName);` in `node.to` to return undefined.
-  for (let i = 0; i < edges.length; i++) {
-    graph.addEdge(edges[i]);
-  }
+  edges.map(edge => graph.addEdge(edge))
 
   if (graph.isCyclic()) {
     console.warn("Graph is cyclic!");

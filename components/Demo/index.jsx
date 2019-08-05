@@ -166,7 +166,7 @@ export default function Demo() {
         <div className={styles.formBuilder}>
           <H2>Form Builder</H2>
           <FormBuilder
-            config={formConfig(defaultState)}
+            config={formConfig(circularState)}
             onSubmit={(state, errors) => {
               console.log("form", state);
               console.log("errors", errors);

@@ -6,7 +6,8 @@ class Graph {
   }
 
   addEdge(edge) {
-    return this.link(edge.getFromNode()).to(edge.getToNode(), edge.getCallback())
+    const { fromNodeName, toNodeName, callBack } = edge;
+    return this.link(fromNodeName).to(toNodeName, callBack)
   }
 
   addNode(name, component, opts) {

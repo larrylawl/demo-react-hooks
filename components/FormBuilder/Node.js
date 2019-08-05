@@ -14,8 +14,6 @@ export default class Node {
   }
 
   to(nodeName, callback) {
-    //const node = this.graph.getNode(nodeName);
-    //this.out.set(node, callback);
     this.out.set(nodeName, callback);
 
     return this.graph;
