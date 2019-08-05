@@ -164,16 +164,32 @@ export default function Demo() {
           </Form>
         </div> */}
         <div className={styles.formBuilder}>
-          <H2>Form Builder</H2>
-          <FormBuilder
-            config={formConfig(circularState)}
-            onSubmit={(state, errors) => {
-              console.log("form", state);
-              console.log("errors", errors);
-              // localStorage.setItem("fb_initial_state", JSON.stringify(state));
-              // alert("Check the developer console!");
-            }}
-          />
+          <div>
+            <H2>Form Builder</H2>
+            <FormBuilder
+              config={formConfig(defaultState)}
+              onSubmit={(state, errors) => {
+                console.log("form", state);
+                console.log("errors", errors);
+                // localStorage.setItem("fb_initial_state", JSON.stringify(state));
+                // alert("Check the developer console!");
+              }}
+            />
+          </div>{" "}
+          <br />
+          <div>
+            <H2>Form Builder with Circular Dependency</H2>
+            Check console log to see infinite calls!
+            <FormBuilder
+              config={formConfig(circularState)}
+              onSubmit={(state, errors) => {
+                console.log("form", state);
+                console.log("errors", errors);
+                // localStorage.setItem("fb_initial_state", JSON.stringify(state));
+                // alert("Check the developer console!");
+              }}
+            />
+          </div>
         </div>
         {/* <div className={styles.formBuilderLarge}>
           <H2>Form Builder (Large)</H2>

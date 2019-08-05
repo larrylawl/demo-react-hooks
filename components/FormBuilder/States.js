@@ -18,18 +18,10 @@ export const defaultState = {
               type: "text",
               component: "FormCheckbox",
               props: {
-                label: "Checking this will uncheck #3"
+                label: "#1"
               },
               ref: true,
-              dependencies: [
-                // {
-                //   "checkThree": (fromNode, toNode) => {
-                //     if (fromNode) {
-                //       toNode.call("setValue", false);
-                //     }
-                //   }
-                // }
-              ],
+              dependencies: [],
               rules: {
                 pattern: "^[A-Za-z ]+$",
                 required: true
@@ -41,18 +33,10 @@ export const defaultState = {
               type: "text",
               component: "FormCheckbox",
               props: {
-                label: "Checking this will uncheck #3"
+                label: "#2"
               },
               ref: true,
-              dependencies: [
-                // {
-                //   "checkThree": (fromNode, toNode) => {
-                //     if (fromNode) {
-                //       toNode.call("setValue", false);
-                //     }
-                //   }
-                // },
-              ],
+              dependencies: [],
               rules: {
                 pattern: "^[A-Za-z ]+$",
                 required: true
@@ -111,16 +95,17 @@ export const circularState = {
           className: "personalDetails",
           questions: [
             {
-              id: "checkOne",
-              className: "checkOne",
+              id: "checkFour",
+              className: "checkFour",
               type: "text",
               component: "FormCheckbox",
               props: {
-                label: "Checking this will check #2"
+                label: "Checking this will check #5"
               },
+              ref: true,
               dependencies: [
                 {
-                  checkTwo: (fromNode, toNode) => {
+                  checkFive: (fromNode, toNode) => {
                     if (fromNode) {
                       toNode.call("setValue", true);
                     }
@@ -133,16 +118,17 @@ export const circularState = {
               }
             },
             {
-              id: "checkTwo",
-              className: "checkTwo",
+              id: "checkFive",
+              className: "checkFive",
               type: "text",
               component: "FormCheckbox",
               props: {
-                label: "Checking this will check #3"
+                label: "Checking this will check #6"
               },
+              ref: true,
               dependencies: [
                 {
-                  checkThree: (fromNode, toNode) => {
+                  checkSix: (fromNode, toNode) => {
                     if (fromNode) {
                       toNode.call("setValue", true);
                     }
@@ -155,16 +141,17 @@ export const circularState = {
               }
             },
             {
-              id: "checkThree",
-              className: "checkThree",
+              id: "checkSix",
+              className: "checkSix",
               type: "text",
               component: "FormCheckbox",
               props: {
-                label: "Checking this will check #1"
+                label: "Checking this will check #4"
               },
+              ref: true,
               dependencies: [
                 {
-                  checkOne: (fromNode, toNode) => {
+                  checkFour: (fromNode, toNode) => {
                     if (fromNode) {
                       toNode.call("setValue", true);
                     }
