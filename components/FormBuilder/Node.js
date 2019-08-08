@@ -20,7 +20,7 @@ export default class Node {
     this.id = id;
     this.component = component;
     this.props = opts.props || {};
-    this.visible = typeof opts.visible !== 'undefined' ? opts.visible : true;
+    this.visible = typeof opts.visible !== "undefined" ? opts.visible : true;
     this.ref = opts.ref ? createRef() : null;
     this.out = new Map();
     this.ui = null;
@@ -44,24 +44,24 @@ export default class Node {
         this.ui = (
           <FormCheckbox
             {...this.props}
-            key={this.name}
+            key={this.id}
             name={this.id}
             ref={this.ref}
-            data-testid={this.name}
+            data-testid={this.id}
           />
         );
         break;
-        case "FormInput":
-          this.ui = (
-            <FormInput
-              {...this.props}
-              key={this.name}
-              name={this.id}
-              ref={this.ref}
-              data-testid={this.name}
-            />
-          );
-          break;
+      case "FormInput":
+        this.ui = (
+          <FormInput
+            {...this.props}
+            key={this.id}
+            name={this.id}
+            ref={this.ref}
+            data-testid={this.id}
+          />
+        );
+        break;
       default:
         console.warn("Invalid Component!");
     }
@@ -74,7 +74,7 @@ export default class Node {
    * https://reactjs.org/docs/refs-and-the-dom.html
    */
   call(method, ...args) {
-    console.log('called')
+    console.log("called");
     return this.ref.current[method].apply(null, args);
   }
 }
