@@ -1,5 +1,5 @@
 # Form Builder
-Form Builder takes in an **input JSON** (in `components/FormBuilder/states.json`, constructs an adjacency list representing an **unweighted and directed graph** (every node is a component and every edge is a dependency), and outputs a **Form JSX**.
+Form Builder takes in an **input JSON**, constructs an adjacency list representing an **unweighted and directed graph** (every node is a component and every edge is a dependency), and outputs a **Form JSX**.
 
 ![Default Form](DefaultState.gif)
 
