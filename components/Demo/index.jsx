@@ -4,7 +4,7 @@ import Layout from "components/Layout";
 import { H2 } from "components/Typography";
 import { FaGithub, FaGitlab } from "react-icons/fa";
 import styles from "./Demo.scss";
-import { defaultState, circularState } from "../FormBuilder/States";
+import { defaultState, circularState, exaggeratedState } from "../FormBuilder/States";
 
 export function getInitialState(key) {
   // Silly code for retrieving saved state. Do not copy!
@@ -60,10 +60,20 @@ export default function Demo() {
           </div>{" "}
           <br />
           <div>
-            <H2>Form Builder with Circular Dependency</H2>
+            <H2>Form Builder with circular dependency</H2>
             Check console log to see infinite calls!
             <FormBuilder
               graph={formConfig(circularState)}
+              onSubmit={(state, errors) => {
+                console.log("form", state);
+                console.log("errors", errors);
+              }}
+            />
+          </div>
+          <div>
+            <H2>Form Builder with exaggerated state </H2>
+            <FormBuilder
+              graph={formConfig(exaggeratedState)}
               onSubmit={(state, errors) => {
                 console.log("form", state);
                 console.log("errors", errors);

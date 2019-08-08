@@ -1,5 +1,6 @@
 import { createRef } from "react";
 import FormCheckbox from "components/FormCheckbox";
+import FormInput from "components/FormInput";
 
 /** Class representing a node. */
 export default class Node {
@@ -50,6 +51,17 @@ export default class Node {
           />
         );
         break;
+        case "FormInput":
+          this.ui = (
+            <FormInput
+              {...this.props}
+              key={this.name}
+              name={this.id}
+              ref={this.ref}
+              data-testid={this.name}
+            />
+          );
+          break;
       default:
         console.warn("Invalid Component!");
     }

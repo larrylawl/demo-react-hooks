@@ -197,7 +197,7 @@ function getExaggeratedDependencies(n) {
     const dependency = {};
     dependency[`dateInput${i}`] = (fromNode, toNode) => {
       if (fromNode) {
-        toNode.call('setValue', fromNode.call('getValue'));
+        // toNode.call('setValue', fromNode.call('getValue'));
       }
     }
     exaggeratedDependencies.push(dependency)
@@ -208,12 +208,12 @@ function getExaggeratedDependencies(n) {
 function getExaggeratedQuestions(n) {
   const exaggeratedQuestions = [];
   const firstQuestion = {
-    id: 'dateInput',
-    className: 'dateInput',
+    id: 'FormInput',
+    className: 'FormInput',
     type: 'text',
-    component: 'DatePicker',
+    component: 'FormInput',
     props: {
-      label: 'This node has an edge to every other nodes below'
+      value: 'This node has an edge to every other nodes below'
     },
     ref: true,
     dependencies: getExaggeratedDependencies(n),
@@ -225,12 +225,12 @@ function getExaggeratedQuestions(n) {
   exaggeratedQuestions.push(firstQuestion);
   for (let i = 0; i < n; i++) {
     const subsequentQuestion = {
-      id: `dateInput${i}`,
-      className: `dateInput${i}`,
+      id: `FormInput${i}`,
+      className: `FormInput${i}`,
       type: 'text',
-      component: 'DatePicker',
+      component: 'FormInput',
       props: {
-        label: 'This node has an edge from the first node'
+        value: 'This node has an edge from the first node'
       },
       ref: true,
       dependencies: [
