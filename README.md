@@ -21,3 +21,8 @@ Form Builder takes in an **input JSON**, constructs an adjacency list representi
 ![Circular Form](CircularState.gif)
 
 ![Exaggerated Form](ExaggeratedForm.gif)
+
+## Credits
+
+[Shawn Lim](https://github.com/geekyme/demo-react-hooks), for his graph POC <br />
+[Zhi Yue](https://github.com/ZhiyueYi), for pair programming with me

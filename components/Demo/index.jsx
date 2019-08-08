@@ -4,47 +4,21 @@ import Layout from "components/Layout";
 import { H2 } from "components/Typography";
 import { FaGithub, FaGitlab } from "react-icons/fa";
 import styles from "./Demo.scss";
-import { defaultState, circularState, exaggeratedState } from "../FormBuilder/States";
-
-export function getInitialState(key) {
-  // Silly code for retrieving saved state. Do not copy!
-  try {
-    if (typeof window === "undefined") return;
-    const state = localStorage.getItem(key);
-
-    if (state !== null) {
-      return JSON.parse(state);
-    } else {
-      throw new Error(`Cannot find ${key}`);
-    }
-  } catch (e) {
-    console.warn(e.message);
-  }
-}
+import {
+  defaultState,
+  circularState,
+  exaggeratedState
+} from "../FormBuilder/States";
 
 export default function Demo() {
-  function customValidate(value) {
-    if (value !== "boo") {
-      return "Value is not boo";
-    } else {
-      return null;
-    }
-  }
   return (
     <Layout>
       <a
-        href="https://github.com/geekyme/demo-react-hooks"
+        href="https://github.com/larrylawl/demo-react-hooks"
         target="_blank"
         className={styles.github}
       >
         <FaGithub className={styles.icon} />
-      </a>
-      <a
-        href="https://gitlab.com/geekyme/demo-react-hooks"
-        target="_blank"
-        className={styles.gitlab}
-      >
-        <FaGitlab className={styles.icon} />
       </a>
       <div className={styles.container}>
         <div className={styles.formBuilder}>
