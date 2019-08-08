@@ -1,5 +1,5 @@
 # Form Builder
-Form Builder takes in an **input JSON**, constructs an adjacency list representing an **unweighted and directed graph** (every node is a component and every edge is a dependency), and outputs a **Form JSX**.
+Form Builder takes in an **input JSON**, constructs an adjacency list representing an **unweighted and directed graph** (every node is a component and every edge is a callback), and outputs a **Form JSX**.
 
 ![Default Form](DefaultState.gif)
 
@@ -57,8 +57,8 @@ export type CallBack = (fromNode: Node, toNode: Node) => void;
 3. Disclaimer: This local setup differs from the ones in the gifs as I have integrated it with AXA's internal repo.
 
 ## Other Features
-Circular Form <br />
+#### Circular Form <br />
 ![Circular Form](CircularState.gif)
 
-Exaggerated Form <br />
+#### Exaggerated Form <br />
 ![Exaggerated Form](ExaggeratedForm.gif)
