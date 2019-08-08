@@ -1,6 +1,12 @@
-import Graph from "./Graph";
+import Graph from './Graph';
 
-// Unweighted and directed graph
+/**
+ * Constructs an adjacency list representing an unweighted and directed graph based on input config JSON.
+ * Throws a warning if graph is cyclic.
+ * @param {string} initialState - JSON
+ * @return {string} Graph
+ */
+
 function getConfig(initialState) {
   const graph = new Graph();
 
@@ -29,12 +35,12 @@ function getConfig(initialState) {
     });
   });
 
-  // Adding Edges only after nodes have been added. 
+  // Adding Edges only after nodes have been added.
   // Having an incomplete nodes might lead to  `this.graph.getNode(nodeName);` in `node.to` to return undefined.
-  edges.map(edge => graph.addEdge(edge))
+  edges.map(edge => graph.addEdge(edge));
 
   if (graph.isCyclic()) {
-    console.warn("Graph is cyclic!");
+    console.warn('Graph is cyclic!');
   }
 
   return graph;

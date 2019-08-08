@@ -3,8 +3,8 @@ import Button from "components/Button";
 import { useGraph } from "components/FormBuilder/GraphUtils";
 
 export default function FormBuilder(props) {
-  const { config, onSubmit, ...other } = props;
-  const { ui, runChanges } = useGraph(config);
+  const { graph, onSubmit, ...other } = props;
+  const { ui, runChanges } = useGraph(graph);
 
   return (
     <Form
