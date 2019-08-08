@@ -6,6 +6,7 @@ Form Builder takes in an **input JSON**, constructs an adjacency list representi
 ## Setup
 1. `npm install`
 2. `npm run dev`
+3. Disclaimer: This local setup is different from the ones in the gifs as I have integrated it with AXA's internal repo.
 
 ## Other Features
 Circular Form <br />
