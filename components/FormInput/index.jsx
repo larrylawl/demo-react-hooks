@@ -22,7 +22,8 @@ function FormInput(props, ref) {
   useImperativeHandle(ref, () => ({
     setValue: value => {
       setValue(value);
-    }
+    },
+    getValue: () => value
   }));
 
   function onInputChange(e) {
