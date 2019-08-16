@@ -7,7 +7,8 @@ Can we automate this process, and cut down development time for ecommerce produc
 
 ## The Solution
 
-Form Builder takes in an **input JSON**, constructs an adjacency list representing an **unweighted and directed graph** (every node is a component and every edge is a callback), and outputs a **Form JSX**. <br />
+Form Builder takes in an **input JSON** and outputs a **dynamic Form JSX**. <br />
+Internally,  Form Builder builds a **dependency graph**, wherein every **node is a component** and every **edge specifies the node's callbacks**; user interaction on a node will trigger its associated callbacks.
 
 ## Setup
 
