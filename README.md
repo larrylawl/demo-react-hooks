@@ -1,7 +1,7 @@
 <h1 align="center"> Form Builder </h1>
 
 <div align="center">
-  <img src="form.png" width="400"/>
+  <img src="form.png" width="300"/>
 </div>
 
 ## The Opportunity
